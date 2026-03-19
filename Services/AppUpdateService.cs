@@ -62,8 +62,15 @@ namespace OptiscalerManager.Services
                                 var assetUrl = downloadProp.GetString();
                                 if (assetUrl != null && assetUrl.EndsWith(".zip", StringComparison.OrdinalIgnoreCase))
                                 {
-                                    DownloadUrl = assetUrl;
-                                    break;
+                                    if (assetUrl.Contains("OptiscalerManager_Portable.zip", StringComparison.OrdinalIgnoreCase))
+                                    {
+                                        DownloadUrl = assetUrl;
+                                        break;
+                                    }
+                                    else if (DownloadUrl == null)
+                                    {
+                                        DownloadUrl = assetUrl; // Fallback just in case
+                                    }
                                 }
                             }
                         }
@@ -150,10 +157,12 @@ namespace OptiscalerManager.Services
                 }
 
                 // Create the batch script
-                var batPath = Path.Combine(AppContext.BaseDirectory, "update.bat");
+                var basePath = AppContext.BaseDirectory.TrimEnd('\\');
+                var batPath = Path.Combine(basePath, "update.bat");
                 var batContent = $@"@echo off
 echo Updating Optiscaler Manager...
 timeout /t 2 /nobreak > nul
+cd /d ""{basePath}""
 xcopy /Y /S ""{updateFolder}\*"" "".\""
 rmdir /s /q ""{updateFolder}""
 start """" ""OptiscalerManager.exe""

@@ -132,16 +132,10 @@ namespace OptiscalerManager.Views
             try
             {
                 TxtStatus.Text = FindResource("TxtCheckingUpdates") as string ?? "Checking for updates…";
+                
+                // Only check for component updates silently on background (OptiScaler, Fakenvapi, NukemFG)
+                // App updates are only checked manually from the Help window per user preference.
                 await _componentService.CheckForUpdatesAsync();
-
-                var appUpdateService = new Services.AppUpdateService(_componentService);
-                bool hasAppUpdate = await appUpdateService.CheckForAppUpdateAsync();
-                if (hasAppUpdate)
-                {
-                    var updateWindow = new AppUpdateWindow(appUpdateService);
-                    updateWindow.Owner = this;
-                    updateWindow.ShowDialog();
-                }
             }
             catch
             {

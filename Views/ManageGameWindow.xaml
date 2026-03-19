@@ -270,15 +270,23 @@
                             Background="{StaticResource BrBorderSubtle}"
                             Margin="16,4"/>
 
-                    <CheckBox x:Name="ChkInstallFakenvapi"
-                              Content="Fakenvapi"
-                              Margin="0,0,16,0"
-                              VerticalAlignment="Center"
-                              ToolTip="{DynamicResource TxtFakenvapiTip}"/>
-                    <CheckBox x:Name="ChkInstallNukemFG"
-                              Content="NukemFG"
-                              VerticalAlignment="Center"
-                              ToolTip="{DynamicResource TxtNukemTip}"/>
+                    <StackPanel Orientation="Horizontal" Margin="0,0,16,0" VerticalAlignment="Center">
+                        <CheckBox x:Name="ChkInstallFakenvapi"
+                                  Content="Fakenvapi"
+                                  VerticalAlignment="Center"/>
+                        <Border Background="{StaticResource BrBgElevated}" BorderBrush="{StaticResource BrBorderSubtle}" BorderThickness="1" CornerRadius="8" Width="16" Height="16" Margin="6,0,0,0" ToolTipService.InitialShowDelay="100" Cursor="Help" ToolTip="{DynamicResource TxtFakenvapiHelpTip}">
+                            <TextBlock Text="?" Foreground="{StaticResource BrTextSecondary}" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-1,0,0"/>
+                        </Border>
+                    </StackPanel>
+
+                    <StackPanel Orientation="Horizontal" VerticalAlignment="Center">
+                        <CheckBox x:Name="ChkInstallNukemFG"
+                                  Content="NukemFG"
+                                  VerticalAlignment="Center"/>
+                        <Border Background="{StaticResource BrBgElevated}" BorderBrush="{StaticResource BrBorderSubtle}" BorderThickness="1" CornerRadius="8" Width="16" Height="16" Margin="6,0,0,0" ToolTipService.InitialShowDelay="100" Cursor="Help" ToolTip="{DynamicResource TxtNukemHelpTip}">
+                            <TextBlock Text="?" Foreground="{StaticResource BrTextSecondary}" FontSize="10" FontWeight="Bold" HorizontalAlignment="Center" VerticalAlignment="Center" Margin="0,-1,0,0"/>
+                        </Border>
+                    </StackPanel>
                     </StackPanel>
                 </StackPanel>
 

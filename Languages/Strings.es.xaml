@@ -85,6 +85,8 @@
     <sys:String x:Key="TxtUpdateOptiManual">↑ Manual: Actualizar / Reinstalar</sys:String>
     <sys:String x:Key="TxtFakenvapiTip">Requerido en GPUs AMD/Intel para habilitar DLSS FG con Nukem mod</sys:String>
     <sys:String x:Key="TxtNukemTip">Mod DLSSG-a-FSR3 de Nukem para Generación de Fotogramas</sys:String>
+    <sys:String x:Key="TxtFakenvapiHelpTip">Engaña al juego haciéndole creer que posees una tarjeta gráfica NVIDIA. Esto permite eludir restricciones de hardware y habilitar tecnologías DLSS en tarjetas AMD o Intel.</sys:String>
+    <sys:String x:Key="TxtNukemHelpTip">Modificación que reemplaza la generación de fotogramas nativa de DLSS por FSR 3 de AMD, permitiendo habilitar Frame Generation en cualquier GPU compatible.</sys:String>
 
     <sys:String x:Key="TxtOptiInstalled">OptiScaler Instalado</sys:String>
     <sys:String x:Key="TxtOptiNotInstalled">No instalado</sys:String>
