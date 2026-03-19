@@ -68,7 +68,7 @@ We welcome contributions! If you'd like to improve OptiScaler Manager:
 
 ## 📄 License & Acknowledgments
 
-*   Distributed under the **MIT License**. See `LICENSE` for more information.
+*   Distributed under the **GPL-3.0 License**. See `LICENSE` for more information.
 *   **[OptiScaler](https://github.com/optiscaler/OptiScaler)**: The core upscaling technology.
 *   **[fakenvapi](https://github.com/optiscaler/fakenvapi)**: Essential compatibility layer.
 *   **[NukemFG](https://github.com/Nukem9/dlssg-to-fsr3)**: Frame Generation bridge.
