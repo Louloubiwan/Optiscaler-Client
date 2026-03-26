@@ -84,6 +84,12 @@ namespace OptiscalerClient.Views
             
             _componentService.OnStatusChanged += ComponentStatusChanged;
             this.Loaded += MainWindow_Loaded;
+            
+            // Restore window state
+            RestoreWindowState();
+            
+            // Handle window state changes
+            this.PropertyChanged += Window_PropertyChanged;
         }
 
         private void ComponentStatusChanged()
@@ -1076,6 +1082,64 @@ namespace OptiscalerClient.Views
             _scanDotTimer?.Stop();
             _scanDotTimer = null;
         }
+
+        #region Window State Persistence
+
+        private void RestoreWindowState()
+        {
+            var config = _componentService.Config;
+            
+            // Restore window size
+            if (config.WindowWidth > 0 && config.WindowHeight > 0)
+            {
+                this.Width = config.WindowWidth;
+                this.Height = config.WindowHeight;
+            }
+            
+            // Restore window position (only if valid)
+            if (!double.IsNaN(config.WindowLeft) && !double.IsNaN(config.WindowTop) &&
+                config.WindowLeft >= 0 && config.WindowTop >= 0)
+            {
+                this.Position = new PixelPoint((int)config.WindowLeft, (int)config.WindowTop);
+            }
+            
+            // Restore maximized state
+            if (config.WindowMaximized)
+            {
+                this.WindowState = WindowState.Maximized;
+            }
+        }
+
+        private void Window_PropertyChanged(object? sender, AvaloniaPropertyChangedEventArgs e)
+        {
+            // Save window state on any relevant property change
+            SaveWindowState();
+        }
+
+        private void SaveWindowState()
+        {
+            var config = _componentService.Config;
+            
+            // Save window size
+            if (this.WindowState != WindowState.Maximized)
+            {
+                config.WindowWidth = this.Width;
+                config.WindowHeight = this.Height;
+            }
+            
+            // Save window position
+            var position = this.Position;
+            config.WindowLeft = position.X;
+            config.WindowTop = position.Y;
+            
+            // Save maximized state
+            config.WindowMaximized = this.WindowState == WindowState.Maximized;
+            
+            // Save configuration
+            _componentService.SaveConfiguration();
+        }
+
+        #endregion
 
         private string GetResourceString(string key, string fallback)
         {

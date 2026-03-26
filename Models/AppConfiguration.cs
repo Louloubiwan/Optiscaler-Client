@@ -42,6 +42,13 @@ namespace OptiscalerClient.Models
         public bool AutoScan { get; set; } = true;
         public bool AnimationsEnabled { get; set; } = true;
         public bool ShowBetaVersions { get; set; } = true;
+        
+        // Window state persistence
+        public double WindowWidth { get; set; } = 1200;
+        public double WindowHeight { get; set; } = 720;
+        public bool WindowMaximized { get; set; } = false;
+        public double WindowLeft { get; set; } = double.NaN;
+        public double WindowTop { get; set; } = double.NaN;
         /// <summary>
         /// The default FSR 4 INT8 extras version to pre-select in ManageGameWindow.
         /// Null or "none" means "do not inject".
